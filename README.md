@@ -1,4 +1,4 @@
-# Backend Technical Task - Banking API
+# Backend Technical Task - Banking API (Intermediate)
 
 This test is a part of our hiring process at TuringTech for backend positions. It should take you between 3 and 4 hours depending on your experience. Hope you will have as much fun as we did coding this test!
 

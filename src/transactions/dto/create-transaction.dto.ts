@@ -3,10 +3,10 @@ import { Account } from 'src/accounts/entities/account.entity';
 
 export class CreateTransactionDto {
   @IsNotEmpty()
-  sourceAccount: Account;
+  sourceAccount: Account['accountNumber'];
 
   @IsNotEmpty()
-  destinationAccount: Account;
+  destinationAccount: Account['accountNumber'];
 
   @IsNotEmpty()
   amount: number;

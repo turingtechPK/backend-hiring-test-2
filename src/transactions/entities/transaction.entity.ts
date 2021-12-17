@@ -14,11 +14,11 @@ export class Transaction {
 
   @ManyToOne(() => Account, (account) => account.accountNumber)
   @JoinColumn({ name: 'sourceAccount' })
-  sourceAccount: Account;
+  sourceAccount: Account['accountNumber'];
 
   @ManyToOne(() => Account, (account) => account.accountNumber)
   @JoinColumn({ name: 'destinationAccount' })
-  destinationAccount: Account;
+  destinationAccount: Account['accountNumber'];
 
   @Column()
   amount: number;

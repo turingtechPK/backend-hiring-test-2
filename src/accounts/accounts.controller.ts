@@ -21,7 +21,7 @@ export class AccountsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.accountsService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.accountsService.findOneOrFail(id);
   }
 }

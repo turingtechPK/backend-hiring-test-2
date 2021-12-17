@@ -13,7 +13,7 @@ import {
 @Entity()
 export class Account {
   @PrimaryGeneratedColumn()
-  accountNumber: string;
+  accountNumber: number;
 
   @ApiProperty()
   @ManyToOne(() => Customer, (customer) => customer.id)

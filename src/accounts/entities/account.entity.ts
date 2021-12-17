@@ -18,10 +18,10 @@ export class Account {
   @ApiProperty()
   @ManyToOne(() => Customer, (customer) => customer.id)
   @JoinColumn({ name: 'customerId' })
-  customerId: Customer;
+  customerId: Customer['id'];
 
   @OneToMany(() => Transaction, (transaction) => transaction.transactionId)
-  transactions: Transaction[];
+  transactions: Transaction['transactionId'];
 
   @ApiProperty()
   @Column({ nullable: false })

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CustomersService } from 'src/customers/customers.service';
 import { Repository } from 'typeorm';
@@ -12,9 +12,19 @@ export class AccountsService {
     private readonly customerService: CustomersService,
   ) {}
 
-  create(createAccountDto: CreateAccountDto) {
-    // TODO(thatdevsherry): Check if customer exists before repository does so
-    return this.accountRepository.save(createAccountDto);
+  async create(createAccountDto: CreateAccountDto) {
+    try {
+      const customer = await this.customerService.findOne(
+        createAccountDto.customerId,
+      );
+      if (customer.id === createAccountDto.customerId) {
+        return this.accountRepository.save(createAccountDto);
+      }
+    } catch (error) {
+      throw new BadRequestException(
+        `No customer with ID: ${createAccountDto.customerId}`,
+      );
+    }
   }
 
   findAll() {

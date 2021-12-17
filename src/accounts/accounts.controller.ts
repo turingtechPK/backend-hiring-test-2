@@ -8,7 +8,11 @@ export class AccountsController {
 
   @Post()
   create(@Body() createAccountDto: CreateAccountDto) {
-    return this.accountsService.create(createAccountDto);
+    try {
+      return this.accountsService.create(createAccountDto);
+    } catch (error) {
+      throw error;
+    }
   }
 
   @Get()

@@ -3,7 +3,8 @@ import { Customer } from 'src/customers/entities/customer.entity';
 
 export class CreateAccountDto {
   @IsNotEmpty()
-  customerId: Customer;
+  @IsNumber()
+  customerId: Customer['id'];
 
   @IsNotEmpty()
   @IsNumber()

@@ -18,4 +18,8 @@ export class CustomersService {
   create(createCustomerDto: CreateCustomerDto): Promise<Customer> {
     return this.customerRepository.save(createCustomerDto);
   }
+
+  async findOne(id: number): Promise<Customer> {
+    return this.customerRepository.findOneOrFail(id);
+  }
 }

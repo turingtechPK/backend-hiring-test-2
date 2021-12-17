@@ -1,4 +1,4 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsNumber } from 'class-validator';
 import { Customer } from 'src/customers/entities/customer.entity';
 
 export class CreateAccountDto {
@@ -6,5 +6,6 @@ export class CreateAccountDto {
   customerId: Customer;
 
   @IsNotEmpty()
+  @IsNumber()
   balance: number;
 }

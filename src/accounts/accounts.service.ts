@@ -19,6 +19,6 @@ export class AccountsService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} account`;
+    return this.accountRepository.findOne(id);
   }
 }

@@ -31,7 +31,7 @@ export class AccountsService {
     return this.accountRepository.find();
   }
 
-  findOne(id: number) {
-    return this.accountRepository.findOne(id);
+  async findOneOrFail(id: number) {
+    return this.accountRepository.findOneOrFail(id);
   }
 }

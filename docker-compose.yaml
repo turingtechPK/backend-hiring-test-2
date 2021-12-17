@@ -1,0 +1,18 @@
+version: '3'
+services:
+  database-tt-bank:
+    image: postgres:14.0-alpine
+    environment:
+      - POSTGRES_DB=tt-bank
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+    volumes:
+      - turing-tech-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      - turing_tech_network
+networks:
+  turing_tech_network:
+volumes:
+  turing-tech-data: {}

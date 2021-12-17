@@ -1,8 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AccountsService } from 'src/accounts/accounts.service';
-import { Account } from 'src/accounts/entities/account.entity';
-import { Repository } from 'typeorm';
+import { EntityNotFoundError, Repository } from 'typeorm';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { Transaction } from './entities/transaction.entity';
 
@@ -14,8 +13,28 @@ export class TransactionsService {
     private accountService: AccountsService,
   ) {}
 
-  create(createTransactionDto: CreateTransactionDto) {
-    // Check if source account has enough balance
-    return this.transactionRepository.save(createTransactionDto);
+  async create(createTransactionDto: CreateTransactionDto) {
+    try {
+      const sourceAccount = await this.accountService.findOneOrFail(
+        createTransactionDto.sourceAccount,
+      );
+      const destinationAccount = await this.accountService.findOneOrFail(
+        createTransactionDto.destinationAccount,
+      );
+
+      if (sourceAccount.balance > createTransactionDto.amount) {
+        const transaction = createTransactionDto as Transaction;
+        transaction.sourceBalance = sourceAccount.balance;
+        transaction.destinationBalance = destinationAccount.balance;
+        return this.transactionRepository.save(transaction);
+      }
+      throw new BadRequestException('Insufficient balance');
+    } catch (e: unknown) {
+      if (e instanceof EntityNotFoundError) {
+        throw new BadRequestException('Account not found');
+      } else if (e instanceof BadRequestException) {
+        throw e;
+      }
+    }
   }
 }

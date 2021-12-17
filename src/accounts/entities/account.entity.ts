@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Customer } from 'src/customers/entities/customer.entity';
 import { Transaction } from 'src/transactions/entities/transaction.entity';
 import {
+  Column,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -21,4 +22,8 @@ export class Account {
 
   @OneToMany(() => Transaction, (transaction) => transaction.transactionId)
   transactions: Transaction[];
+
+  @ApiProperty()
+  @Column({ nullable: false })
+  balance: number;
 }

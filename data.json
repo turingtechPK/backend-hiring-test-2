@@ -1,0 +1,37 @@
+{
+  "customer": [
+    {
+      "id": "0",
+      "error": "Insufficient funds"
+    },
+    {
+      "id": "1",
+      "success": "Transfer Successful"
+    },
+    {
+      "id": "2",
+      "name": "test",
+      "email": "test@1.com",
+      "balance": 500,
+      "history": [
+        "sent amount 500$ to test-4"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "test",
+      "email": "test@1.com",
+      "balance": 1000,
+      "history": []
+    },
+    {
+      "id": "4",
+      "name": "test",
+      "email": "test@1.com",
+      "balance": 500,
+      "history": [
+        "recieved amount 500$ from test"
+      ]
+    }
+  ]
+}

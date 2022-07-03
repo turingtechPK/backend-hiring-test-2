@@ -7,6 +7,7 @@ const auth = require('../../middlewares/auth');
 
 router.get('/', accountController.getAllAccounts);
 router.get('/:accountNum', auth, accountController.getAccount);
+router.post('/', auth, accountController.getAllTransHis);
 router.post('/create', accountController.createAccount);
 router.post('/deposit', accountController.depositAmount);
 router.post('/withdraw', auth, accountController.withdrawAmount);

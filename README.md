@@ -1,9 +1,15 @@
 # How to run the code
- - Make sure you have node Installed
+ - Make sure you have Node and MongoDB installed
  - run the command **npm i**
  - run the command **npm start** to start the project at port 3010
  - Use the provided Postman Collection for testing
  - That's All Folks! :)
+ 
+ ## Technologies Used
+ - Typescript
+ - Node
+ - Express
+ - MongoDB
 
 # Backend Technical Task - Banking API (Intermediate)
 

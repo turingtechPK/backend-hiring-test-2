@@ -55,6 +55,14 @@ You are expected to design any other required models and routes for your API.
 - Use typescript
 - Use NestJS or any other framework like loopback
 
+# How to run the code
+ - Make sure you have node Installed
+ - run the command 'npm i'
+ - run the command 'npm start' to start the project at port 3010
+ - Use the provided Postman Collection for testing
+ - That's All Folks! :)
+
+
 ## Code Submit
 Please organize, design, test and document your code as if it were going into production. Fork this repository and send us a pull request. We will review it and get back to you in order to talk about your code! 
 

@@ -3,12 +3,14 @@ const accountController = require('../../controllers/account');
 
 const router = express.Router();
 
+const auth = require('../../middlewares/auth');
+
 router.get('/', accountController.getAllAccounts);
-router.get('/:account', accountController.getAccount);
+router.get('/:accountNum', auth, accountController.getAccount);
 router.post('/create', accountController.createAccount);
 router.post('/deposit', accountController.depositAmount);
-router.post('/withdraw', accountController.withdrawAmount);
-router.put('/transfer', accountController.transferAmount);
+router.post('/withdraw', auth, accountController.withdrawAmount);
+router.put('/transfer', auth, accountController.transferAmount);
 router.delete('/delete', accountController.deleteAccount);
 
 module.exports = router;

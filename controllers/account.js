@@ -15,7 +15,7 @@ exports.getAllAccounts = catchAsync(async (req, res, next) => {
 
 exports.getAccount = catchAsync(async (req, res, next) => {
   const account = await Account.findOne({
-    accountNumber: req.params.accountNumber,
+    accountNumber: req.params.accountNum,
   });
   if (!account) {
     return next(new RichError('No account found with that ID', 404));

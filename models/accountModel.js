@@ -26,6 +26,10 @@ const accountSchema = new Schema({
     default: 1,
     trim: true,
   },
+  admin: {
+    type: String,
+    default: false,
+  },
 });
 
 accountSchema.pre('save', async function (next) {

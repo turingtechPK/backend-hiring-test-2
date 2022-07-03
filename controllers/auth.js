@@ -12,9 +12,13 @@ module.exports.verifyAccount = async (req, res) => {
   const account = await Account.find({ email: `${req.body.email}` });
   const doMatch = await bcrypt.compare(req.body.password, account[0].password);
   if (doMatch) {
-    const token = jwt.sign({ id: account[0]._id }, process.env.SECRET_HASH, {
-      expiresIn: process.env.EXPIRES_IN,
-    });
+    const token = jwt.sign(
+      { id: account[0]._id, admin: account[0].admin },
+      process.env.SECRET_HASH,
+      {
+        expiresIn: process.env.EXPIRES_IN,
+      }
+    );
     res.status(200).json({
       status: 'success',
       data: {

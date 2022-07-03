@@ -1,3 +1,10 @@
+# How to run the code
+ - Make sure you have node Installed
+ - run the command **npm i**
+ - run the command **npm start** to start the project at port 3010
+ - Use the provided Postman Collection for testing
+ - That's All Folks! :)
+
 # Backend Technical Task - Banking API (Intermediate)
 
 This test is a part of our hiring process at TuringTech for backend positions. It should take you between 3 and 4 hours depending on your experience. Hope you will have as much fun as we did coding this test!
@@ -54,13 +61,6 @@ You are expected to design any other required models and routes for your API.
 
 - Use typescript
 - Use NestJS or any other framework like loopback
-
-# How to run the code
- - Make sure you have node Installed
- - run the command 'npm i'
- - run the command 'npm start' to start the project at port 3010
- - Use the provided Postman Collection for testing
- - That's All Folks! :)
 
 
 ## Code Submit

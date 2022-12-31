@@ -1,54 +1,49 @@
-# Backend Technical Task - Banking API (Beginner)
+# TuringTech - Backend technical test (Beginner -> Intermediate)
 
-This test is a part of our hiring process at TuringTech for backend positions. It should take you between 3 and 4 hours depending on your experience. Hope you will have as much fun as we did coding this test!
+This test is a part of our hiring process at TuringTech for [backend positions](https://hr@turingtechnologies.org). It should take you between 5 and 7 hours depending on your experience.
+Hope you will have as much fun as we did coding this test!
 
-## Objective
+## Summary
 
-Your assignment is to build an internal API for a fake financial institution using NodeJS.
+The purpose of the test is to develop a Books backend API system.
 
-### Brief
+## Explanation
 
-While modern banks have evolved to serve a plethora of functions, at their core, banks must provide certain basic features. Your task is to build the basic HTTP API for one of those banks! Imagine you are designing a backend API for bank employees. It could ultimately be consumed by multiple frontends (web, iOS, Android etc).
+Books API should be built upon four basic concepts:
 
-### Tasks
+### Volume
+A volume represents the data that Books hosts about a book or magazine. It is the primary resource in the Books API. All other resources in this API either contain or annotate a volume.
+    
+### Bookshelf
+A bookshelf is a collection of volumes. Users can create, modify or delete their bookshelves, which are always filled with volumes manually. Bookshelves can be made private or public by the user.
 
-- Implement assignment using Nodejs or any other Node specific framework:
-- There should be API routes that allow them to:
-- Create a new bank account for a customer, with an initial deposit amount. A single customer may have multiple bank accounts.
-- Transfer amounts between any two accounts, including those owned by different customers.
-- Retrieve balances for a given account.
-- Retrieve transfer history for a given account.
-- Write tests for your business logic
+_Example bookshelves_:
 
-Feel free to pre-populate your customers with the following:
-[
-  {
-    "id": 1,
-    "name": "Arisha Barron"
-  },
-  {
-    "id": 2,
-    "name": "Branden Gibson"
-  },
-  {
-    "id": 3,
-    "name": "Rhonda Church"
-  },
-  {
-    "id": 4,
-    "name": "Georgina Hazel"
-  }
-]
-You are expected to design any other required models and routes for your API.
+"Favorites": {"Harry Potter"}
+      
+"My eBooks": {"Switch", "Twilight", "The Girl with the Dragon Tattoo"}
 
-## Evaluation Criteria
 
-- Node best practices
-- Completeness: did you complete the features?
-- Correctness: does the functionality act in sensible, thought-out ways?
-- Maintainability: is it written in a clean, maintainable way?
-- Testing: is the system adequately tested?
-- Documentation: is the API well-documented?
+### Review: 
+A review of a volume is a combination of a star rating and/or text. A user can submit one review per volume. Reviews are also available from outside sources and are attributed appropriately.
+
+### Reading Position
+A reading position indicates the last read position in a volume for a user. A user can only have one reading position per volume. If the user has not opened that volume before, then the reading position does not exist. The reading position can store detailed position information down to the resolution of a word. This information is always private to the user. 
+
+## Books API data model
+
+A resource is an individual data entity with a unique identifier. The Books API operates on two types of resources, based on the concepts described above:
+
+- Volume resource: Represents a volume.
+- Bookshelf resource: Represents a single bookshelf for a particular user.
+
+The Books API data model is based on groups of resources, called collections:
+
+### Volume collection
+The volume collection, is a collection of every volume resource managed by Books API. As such, you cannot list all volume resources, but you can list all volumes that match a set of search terms.
+
+### Bookshelf collection
+A bookshelf collection consists of all the bookshelf resources managed by Books API. Bookshelves must always be referenced in the context of a specific user's library. Bookshelves can contain zero or more volumes. 
 
 ## Bonus
 
@@ -58,7 +53,6 @@ You are expected to design any other required models and routes for your API.
 ## Code Submit
 Please organize, design, test and document your code as if it were going into production. Fork this repository and send us a pull request. We will review it and get back to you in order to talk about your code! 
 
-__Feel free to apply! Drop us a line with your Linkedin/Github/Twitter/AnySocialProfileWhereYouAreActive at hr@turingtechnologies.org__
+__Feel free to apply! Drop us a line with your Linkedin/Github/AnySocialProfileWhereYouAreActive at hr@turingtechnologies.org__
 
 All the best and happy coding.
-

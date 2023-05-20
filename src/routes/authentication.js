@@ -32,7 +32,8 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-  const { username, email, password, firstName, lastName } = req.body;
+  const { username, email, password, firstName, lastName, accountType } =
+    req.body;
 
   //   console.log(req.body);
 
@@ -43,6 +44,7 @@ router.post("/signup", async (req, res) => {
       password,
       firstName,
       lastName,
+      accountType,
     });
     res
       .status(201)

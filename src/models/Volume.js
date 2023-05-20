@@ -7,3 +7,7 @@ const VolumeSchema = new Schema({
   published_date: { type: Date },
   description: { type: String },
 });
+
+const Volume = mongoose.model("Volume", VolumeSchema);
+
+module.exports = Volume;

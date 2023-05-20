@@ -9,12 +9,12 @@ app.use(express.json());
 
 const authentication = require("./routes/authentication");
 const bookShelf = require("./routes/bookShelfManagement");
+const volume = require("./routes/volume");
 
-// const volume = require("./routes/volume");
 // Adding out routes
 app.use("/api/auth", authentication);
 app.use("/api/bookshelf", bookShelf);
-// app.use("/api/volume", authentication);
+app.use("/api/volume", volume);
 
 // Conecting to mongo db using enviorment var
 mongoose.connect(process.env.db_connection_string, {

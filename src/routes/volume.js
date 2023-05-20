@@ -3,7 +3,6 @@ const router = express.Router();
 const Volume = require("../models/Volume");
 
 const { getUserAccountType } = require("../services/userServices");
-const Bookshelf = require("../models/Bookshelf");
 
 router.get("/ping", (req, res) => {
   res

@@ -123,6 +123,38 @@ router.put("/", async (req, res) => {
   }
 });
 
+router.delete("/removeVolumes", async (req, res) => {
+  const { bookshelf_id, user_id, volumes } = req.body;
+
+  console.log(bookshelf_id, user_id, volumes);
+
+  try {
+    const bookshelf = await Bookshelf.findById(bookshelf_id);
+    console.log(bookshelf);
+    if (user_id != bookshelf.user) {
+      res.status(401).json({
+        message: "Not Authorized!",
+      });
+    } else {
+      volumes.forEach((volume) => {
+        // Remove the volumes
+        const index = bookshelf.volumes.indexOf(volume);
+        if (index > -1) {
+          bookshelf.volumes.splice(index, 1);
+        }
+      });
+
+      bookshelf.save();
+      res.status(200).json({
+        message: "Volumes removed",
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error Occured" });
+  }
+});
+
 router.delete("/", async (req, res) => {
   const { bookshelf_id } = req.body;
 

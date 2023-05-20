@@ -61,6 +61,61 @@ router.get("/", async (req, res) => {
   }
 });
 
+// fetch bookshelf of another user, only public ones are shown
+router.get("/otherUser", async (req, res) => {
+  const { user_id, other_user } = req.body;
+
+  //   const validUser_Id = await checkUserId(user_id);
+
+  try {
+    const bookshelf = await Bookshelf.find({
+      user: other_user,
+      visibility: "public",
+    });
+    console.log(bookshelf.length);
+    if (bookshelf.length === 0) {
+      res.status(404).json({
+        message: "No Bookshelf!",
+      });
+    } else {
+      res.status(200).json({
+        message: "Bookshelf Located!",
+        bookshelf,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to locate Bookshelf" });
+  }
+});
+
+// fetch all public bookshelf
+router.get("/allPublic", async (req, res) => {
+  // const { user_id, other_user } = req.body;
+
+  //   const validUser_Id = await checkUserId(user_id);
+
+  try {
+    const bookshelf = await Bookshelf.find({
+      visibility: "public",
+    });
+    console.log(bookshelf.length);
+    if (bookshelf.length === 0) {
+      res.status(404).json({
+        message: "No Bookshelf!",
+      });
+    } else {
+      res.status(200).json({
+        message: "Bookshelf Located!",
+        bookshelf,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to locate Bookshelf" });
+  }
+});
+
 router.put("/addVolumes", async (req, res) => {
   const { bookshelf_id, user_id, volumes } = req.body;
 

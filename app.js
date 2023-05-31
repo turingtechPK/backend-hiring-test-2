@@ -3,6 +3,11 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const HttpError = require('./models/http-error');
+const userRouter = require('./routes/user-routes');
+const volRouter = require('./routes/volume-routes');
+const reviewRouter = require('./routes/review-routes');
+const bookShelfRouter = require('./routes/bookshelf-routes');
+const positionRouter = require('./routes/position-routes');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -17,8 +22,12 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
-const userRouter = require('./routes/user-routes');
+
 app.use('/user', userRouter);
+app.use('/volume', volRouter);
+app.use('/review', reviewRouter);
+app.use('/bookshelf', bookShelfRouter);
+app.use('/position', positionRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World, says Shayan Amir');

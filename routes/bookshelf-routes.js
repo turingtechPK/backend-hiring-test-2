@@ -8,5 +8,6 @@ router.get('/', bookshelfController.getAllBookshelves)
 router.patch('/makePublic/:bookshelf', bookshelfController.makePublic)
 router.patch('/makePrivate/:bookshelf', bookshelfController.makePrivate)
 router.patch('/addVolume/:bookshelf', bookshelfController.addVolume)
+router.delete('/:bookshelf', bookshelfController.deleteBookShelf)
 
 module.exports = router;

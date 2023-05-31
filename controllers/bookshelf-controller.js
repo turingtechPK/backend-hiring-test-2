@@ -111,8 +111,26 @@ const addVolume = async(req, res, next) => {
 
 }
 
+const deleteBookShelf = async (req, res, next) => {
+    const bookshelf_id  = req.params.bookshelf;
+    try {
+        const bookshelf = await BookShelf.findById(bookshelf_id);
+        
+        if (!bookshelf) {
+        return res.status(404).json({ message: "Bookshelf not found" });
+        }
+        
+        await BookShelf.findByIdAndDelete(bookshelf_id);
+        
+        res.status(200).json({ message: "Bookshelf deleted successfully" });
+    } catch (err) {
+        return next(new HttpError(err.message, 500));
+    }
+};
+
 exports.getAllBookshelves = getAllBookshelves;
 exports.addNewBookShelf = addNewBookShelf;
 exports.makePublic = makePublic;
 exports.makePrivate = makePrivate;
 exports.addVolume = addVolume;
+exports.deleteBookShelf = deleteBookShelf;

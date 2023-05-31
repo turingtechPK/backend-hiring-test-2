@@ -1,0 +1,27 @@
+{
+  "name": "backend-hiring-test-2",
+  "version": "1.0.0",
+  "description": "This test is a part of our hiring process at TuringTech for [backend positions](https://hr@turingtechnologies.org). It should take you between 5 and 7 hours depending on your experience.\r Hope you will have as much fun as we did coding this test!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShayanZuberi/backend-hiring-test-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShayanZuberi/backend-hiring-test-2/issues"
+  },
+  "homepage": "https://github.com/ShayanZuberi/backend-hiring-test-2#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.1",
+    "express": "^4.18.2",
+    "mongodb": "^5.5.0",
+    "mongoose": "^7.2.2"
+  }
+}

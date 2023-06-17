@@ -1,6 +1,8 @@
-import { Controller, Post, Body } from "@nestjs/common";
+import { Controller, Post, Body, Get, Param } from "@nestjs/common";
 import { VolumeService } from "./Volume.service";
 
+/* This is a TypeScript class that defines a controller for adding volumes with specific properties to
+a volume service. */
 @Controller('volumes')
 export class VolumeController{
     constructor (private readonly volumeService: VolumeService) {}
@@ -14,5 +16,10 @@ export class VolumeController{
 
             const generatedId = this.volumeService.insertVolume(volTitle, volAuthor, pubDate, volDesc);
             return {id: generatedId}; 
+    }
+
+    @Get(':id')
+    getVolumes(@Param('id') volId: string) {
+        return this.volumeService.getVolumes(volId);
     }
 } 

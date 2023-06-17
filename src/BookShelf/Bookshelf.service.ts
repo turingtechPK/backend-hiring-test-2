@@ -1,7 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Bookshelf } from './Bookshelf.model';
+import { Bookshelf } from '../models/Bookshelf.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { Volume } from 'src/models/Volume.model';
+
 /* The BookshelfService class is an Injectable service that allows for the insertion of new Bookshelf objects
 into an array. */
 @Injectable() 
@@ -13,21 +15,33 @@ export class BookshelfService{
         @InjectModel('Bookshelf') private readonly bookshelfModel: Model<Bookshelf>
         ) {}
 
-    async insertBookshelf(shelfTitle: string, vols: string, description: string) {
+    async insertBookshelf(shelfTitle: string, vols: Volume[], description: string) {
         const newBookshelf = new this.bookshelfModel({
             shelfTitle: shelfTitle, 
             volumes: vols, 
             shelfDesc: description
         });
         const result = await newBookshelf.save()
-        console.log(result);
+        return result.id as string;
     }
 
-    getBookshelfs(shelfId: string) {
-        const results =  this.Bookshelf.find((shelf) => shelf.shelfId === shelfId);
-        if (!results){
+    async getBookshelves(){
+        const result = await this.bookshelfModel.find().exec()
+        return result; 
+    }
+
+    async getBookshelf(shelfId: string): Promise<Bookshelf> {
+        let bookshelf;
+        
+        try {
+            bookshelf =  await this.bookshelfModel.findById(shelfId);
+        } catch (error) {
+            throw new NotFoundException ('Could not find bookshelf');
+        }
+
+        if (!bookshelf){
             throw new NotFoundException('Could not find bookshelf');
         }
-        return {...results};
+        return bookshelf;
     }
 }

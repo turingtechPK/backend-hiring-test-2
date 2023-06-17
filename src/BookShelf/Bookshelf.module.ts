@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { BookshelfController } from './Bookshelf.controller';
+import { BookshelfController } from '../controllers/Bookshelf.controller';
 import { BookshelfService } from './Bookshelf.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { BookshelfSchema } from './Bookshelf.model';
+import { BookshelfSchema } from '../models/Bookshelf.model';
 
 
 /* This is a TypeScript module that exports a BookshelfModule class with a BookshelfController controller and

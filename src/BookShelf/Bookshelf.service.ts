@@ -15,7 +15,9 @@ export class BookshelfService{
 
     async insertBookshelf(shelfTitle: string, vols: string, description: string) {
         const newBookshelf = new this.bookshelfModel({
-            shelfTitle, vols, description
+            shelfTitle: shelfTitle, 
+            volumes: vols, 
+            shelfDesc: description
         });
         const result = await newBookshelf.save()
         console.log(result);

@@ -4,6 +4,7 @@ import { UserSchema } from "src/models/User.model";
 import { UserService } from "./User.service";
 import { UserController } from '../controllers/User.controller'
 
+/* This is a module for managing users in a TypeScript application using Mongoose. */
 @Module({
     imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }])],
     controllers: [UserController],

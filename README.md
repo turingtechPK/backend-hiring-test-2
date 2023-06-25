@@ -1,58 +1,73 @@
-# TuringTech - Backend technical test (Beginner -> Intermediate)
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+</p>
 
-This test is a part of our hiring process at TuringTech for [backend positions](https://hr@turingtechnologies.org). It should take you between 5 and 7 hours depending on your experience.
-Hope you will have as much fun as we did coding this test!
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-## Summary
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-The purpose of the test is to develop a Books backend API system.
+## Description
 
-## Explanation
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-Books API should be built upon four basic concepts:
+## Installation
 
-### Volume
-A volume represents the data that Books hosts about a book or magazine. It is the primary resource in the Books API. All other resources in this API either contain or annotate a volume.
-    
-### Bookshelf
-A bookshelf is a collection of volumes. Users can create, modify or delete their bookshelves, which are always filled with volumes manually. Bookshelves can be made private or public by the user.
+```bash
+$ npm install
+```
 
-_Example bookshelves_:
+## Running the app
 
-"Favorites": {"Harry Potter"}
-      
-"My eBooks": {"Switch", "Twilight", "The Girl with the Dragon Tattoo"}
+```bash
+# development
+$ npm run start
 
+# watch mode
+$ npm run start:dev
 
-### Review: 
-A review of a volume is a combination of a star rating and/or text. A user can submit one review per volume. Reviews are also available from outside sources and are attributed appropriately.
+# production mode
+$ npm run start:prod
+```
 
-### Reading Position
-A reading position indicates the last read position in a volume for a user. A user can only have one reading position per volume. If the user has not opened that volume before, then the reading position does not exist. The reading position can store detailed position information down to the resolution of a word. This information is always private to the user. 
+## Test
 
-## Books API data model
+```bash
+# unit tests
+$ npm run test
 
-A resource is an individual data entity with a unique identifier. The Books API operates on two types of resources, based on the concepts described above:
+# e2e tests
+$ npm run test:e2e
 
-- Volume resource: Represents a volume.
-- Bookshelf resource: Represents a single bookshelf for a particular user.
+# test coverage
+$ npm run test:cov
+```
 
-The Books API data model is based on groups of resources, called collections:
+## Support
 
-### Volume collection
-The volume collection, is a collection of every volume resource managed by Books API. As such, you cannot list all volume resources, but you can list all volumes that match a set of search terms.
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-### Bookshelf collection
-A bookshelf collection consists of all the bookshelf resources managed by Books API. Bookshelves must always be referenced in the context of a specific user's library. Bookshelves can contain zero or more volumes. 
+## Stay in touch
 
-## Bonus
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-- Use typescript
-- Use NestJS or any other framework like loopback
+## License
 
-## Code Submit
-Please organize, design, test and document your code as if it were going into production. Fork this repository and send us a pull request. We will review it and get back to you in order to talk about your code! 
-
-__Feel free to apply! Drop us a line with your Linkedin/Github/AnySocialProfileWhereYouAreActive at hr@turingtechnologies.org__
-
-All the best and happy coding.
+Nest is [MIT licensed](LICENSE).
